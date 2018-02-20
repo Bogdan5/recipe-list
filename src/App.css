@@ -1,0 +1,24 @@
+.App{
+  position:relative;
+  background-color: white;
+  height: 100vh;
+}
+
+.App>div{
+  border:2px solid rgb(56, 67, 92);
+  border-radius: 4px;
+  padding: 10px;
+  width:75%;
+  margin: 0 auto;
+}
+
+.Cards{
+  width:90%;
+  min-height: 50px;
+  background-color: rgb(53, 75, 126);
+  border: 1px solid rgb(31, 45, 78);
+  border-radius: 2px;
+  margin:20px auto;
+  padding-left: 20px;
+  line-height: 50px;
+}
