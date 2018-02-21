@@ -14,10 +14,10 @@ class App extends Component {
       }],
       styleDB:{
         zIndex:-1,
-        position: 'absolute',
-        top:'50px',
-        left:'25%',
-        width:'50%'
+        position:'absolute',
+        width:'100%',
+        top:0,
+        backgroundColor:'rgba(103, 105, 112, 0.5)'
       }
     }
   }
