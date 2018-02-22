@@ -18,14 +18,37 @@ class App extends Component {
         width:'100%',
         top:0,
         backgroundColor:'rgba(103, 105, 112, 0.5)'
-      }
+      },
+      valueNameDB:'',
+      valueIngrDB:''
     }
   }
 
-  displayDB = ()=>{
+  // this method changes the zIndex of the DialogBox component, to make it visible or invisible
+  changeZIndex = (z) => {
     let styler = Object.assign({},this.state.styleDB);
-    styler['zIndex']=5;
+    styler['zIndex']=z;
     this.setState({styleDB:styler});
+  }
+  // uses the changeZIndex method to make the DialogBox component visible
+  displayDB = ()=>{
+    this.changeZIndex(5);
+  }
+  // uses the changeZIndex method to make the DialogBox component invisible
+  closeDB = ()=>{
+    this.changeZIndex(-1);
+  }
+  // method that receives the data from the form of the DataBox component (see that component)
+  // and adds it to state
+  addRecipe = (nam, ingr)=>{
+    let index=this.state.recipes.id;
+    let list = this.state.recipes;
+    this.setState({recipes:list.push({
+      id:++index,
+      name:nam,
+      ingredients: ingr.split(',')
+    })});
+    this.closeDB();
   }
 
 
@@ -34,11 +57,15 @@ class App extends Component {
       <div className="App">
         <div >
           {this.state.recipes.map((item)=><Cards key={item.id}
-            name={item.name} ingredients={item.ingredients}
+            name={item.name} ingredients={item.ingredients} slide={this.startSlide}//make animation here
           />)}
         </div>
         <button onClick={this.displayDB}>Add Recipe</button>
-        <div style={this.state.styleDB}><DialogBox/></div>
+        <div style={this.state.styleDB}>
+          <DialogBox  callbackFromParent={this.closeDB} adder={this.addRecipe}
+            valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}
+          />
+        </div>
       </div>
 
     );
