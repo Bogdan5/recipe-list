@@ -62,7 +62,8 @@ class App extends Component {
         </div>
         <button onClick={this.displayDB}>Add Recipe</button>
         <div style={this.state.styleDB}>
-          <DialogBox  callbackFromParent={this.closeDB} adder={this.addRecipe}
+          <DialogBox  callbackFromParent={this.closeDB} callback2={this.displayDB}
+            adder={this.addRecipe}
             valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}
           />
         </div>

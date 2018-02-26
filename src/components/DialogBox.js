@@ -14,6 +14,11 @@ class DialogBox extends Component {
   addRecipe=()=>{
     this.props.adder(this.state.name,this.state.ingredients);
   }
+
+  getValueName=(e)=>{this.setState({name:e.target.value});}
+
+  getValueIngredients=(e)=>{this.setState({ingredients:e.target.value});}
+
   render() {
     return (
       <div className="DialogBox">
@@ -24,9 +29,11 @@ class DialogBox extends Component {
           </header>
           <form>
             <p>Recipe</p>
-            <input type="text" name="recipeName" value={this.state.name}/>
+            <input type="text" name="recipeName" value={this.state.name}
+            onChange={this.getValueName}/>
             <p>Ingredients</p>
-            <input type="text" name="ingredients" value={this.state.ingredients}/>
+            <input type="text" name="ingredients" value={this.state.ingredients}
+            onChange={this.getValueIngredients}/>
           </form>
           <footer>
             <input type="submit" value="Submit" onClick={this.addRecipe}/>

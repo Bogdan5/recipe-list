@@ -1,15 +1,31 @@
 import React, { Component } from 'react';
+import TransitionGroup from 'react-addons-transition-group';
+import EditBox from './EditBox';
 import '../App.css';
 
+const TransitionGroup = React.addons.TransitionGroup;
+
 class Cards extends Component {
+  constructor(props){
+    super(props);
+    this.state={visible:false};
+  }
+
+  fromEB=()=>{
+    
+  }
+
   // this method is used to pass the signal to start slide down to the App parent
-  slider=()=>{
-    this.props.slide();
+  slide=()=>{
+    this.setState({visible:!this.state.visible});
   }
   render() {
     return (
       <div className="Cards">
-        <div onClick={this.slider}>{this.props.name}</div>
+        <div onClick={this.slide}>{this.props.name}</div>
+        <TransitionGroup>
+          <EditBox ingredients={this.props.ingredients} callBackParent={this.fromEB}/>
+        </TransitionGroup>
       </div>
     );
   }
