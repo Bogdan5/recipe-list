@@ -41,14 +41,14 @@ class App extends Component {
   // method that receives the data from the form of the DataBox component (see that component)
   // and adds it to state
   addRecipe = (nam, ingr)=>{
+    this.closeDB();
     let index=this.state.recipes.id;
     let list = this.state.recipes;
     this.setState({recipes:list.push({
       id:++index,
       name:nam,
-      ingredients: ingr.split(',')
+      ingredients: ingr.split(',').map((item)=>item.trim())
     })});
-    this.closeDB();
   }
 
   editRecipe=(action, name)=>{
@@ -72,7 +72,7 @@ class App extends Component {
         <button onClick={this.displayDB}>Add Recipe</button>
         <div style={this.state.styleDB}>
           <DialogBox  editorApp={this.editRecipe} callbackApp={this.displayDB}
-            adder={this.addRecipe}
+            hider={this.closeDB} adder={this.addRecipe}
             valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}
           />
         </div>

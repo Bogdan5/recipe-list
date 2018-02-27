@@ -7,8 +7,8 @@ class DialogBox extends Component {
       this.state={name:'',ingredients:''};
   }
 
-  removeDB=()=>{
-    this.props.callbackFromParent();
+  hideDB=()=>{
+    this.props.hider();
   }
 
   addRecipe=()=>{
@@ -25,7 +25,7 @@ class DialogBox extends Component {
         <div className="DialogDiv">
           <header className="header-db">
             <div>Add a recipe</div>
-            <div onClick={this.removeDB}>x</div>
+            <div onClick={this.hideDB}>x</div>
           </header>
           <form>
             <p>Recipe</p>
@@ -37,7 +37,7 @@ class DialogBox extends Component {
           </form>
           <footer>
             <input type="submit" value="Submit" onClick={this.addRecipe}/>
-            <button onClick={this.removeDB}>Cancel</button>
+            <button onClick={this.hideDB}>Cancel</button>
           </footer>
         </div>
       </div>

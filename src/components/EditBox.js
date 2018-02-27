@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { VelocityComponent } from 'velocity-react';
+// import { VelocityComponent } from 'velocity-react';
+import Velocity from 'velocity-animate';
 import '../App.css';
 
 class EditBox extends Component {
