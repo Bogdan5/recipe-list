@@ -15,6 +15,10 @@ class EditBox extends Component {
 
   setContainer = (c)=> this.container = c;
 
+  editRecipe = ()=>this.props.editor('edit');
+
+  deleteRecipe=()=>this.props.editor('delete');
+
   render() {
     return (
       <div className="EditBox" ref={this.setContainer(this)}>
@@ -25,8 +29,8 @@ class EditBox extends Component {
           )}
         </div>
         <div>
-          <button>Delete</button>
-          <button onClick={}>Edit</button>
+          <button onClick={this.deleteRecipe}>Delete</button>
+          <button onClick={this.editRecipe}>Edit</button>
         </div>
       </div>
     );

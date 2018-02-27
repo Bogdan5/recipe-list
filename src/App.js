@@ -51,6 +51,15 @@ class App extends Component {
     this.closeDB();
   }
 
+  editRecipe=(action, name)=>{
+    if (action==='edit'){
+      this.displayDB();
+    } else if (action==='delete'){
+      const list=this.state.recipes.filter((item)=>item.name!==name);
+      this.setState({recipes:list});
+    }
+  }
+
 
   render() {
     return (
@@ -62,7 +71,7 @@ class App extends Component {
         </div>
         <button onClick={this.displayDB}>Add Recipe</button>
         <div style={this.state.styleDB}>
-          <DialogBox  callbackFromParent={this.closeDB} callback2={this.displayDB}
+          <DialogBox  editorApp={this.editRecipe} callbackApp={this.displayDB}
             adder={this.addRecipe}
             valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}
           />

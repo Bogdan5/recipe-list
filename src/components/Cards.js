@@ -12,7 +12,7 @@ class Cards extends Component {
   }
 
   fromEB=()=>{
-    
+    this.props.editorApp(action, {this.props.name});
   }
 
   // this method is used to pass the signal to start slide down to the App parent
@@ -24,7 +24,7 @@ class Cards extends Component {
       <div className="Cards">
         <div onClick={this.slide}>{this.props.name}</div>
         <TransitionGroup>
-          <EditBox ingredients={this.props.ingredients} callBackParent={this.fromEB}/>
+          <EditBox ingredients={this.props.ingredients} editor={this.fromEB}/>
         </TransitionGroup>
       </div>
     );
