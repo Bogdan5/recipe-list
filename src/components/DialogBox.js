@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import '../App.css';
 
 class DialogBox extends Component {
-  constructor(props){
-      super(props);
-      this.state={name:'',ingredients:''};
+  constructor(props) {
+    super(props);
+    this.state = { name: '', ingredients: '' };
   }
 
-  hideDB=()=>{
+  hideDB = () => {
     this.props.hider();
-  }
+  };
 
-  addRecipe=()=>{
-    this.props.adder(this.state.name,this.state.ingredients);
-  }
+  addRecipe = () => {
+    this.props.adder(this.state.name, this.state.ingredients);
+  };
 
-  getValueName=(e)=>{this.setState({name:e.target.value});}
+  getValueName = (e) => { this.setState({ name: e.target.value });};
 
-  getValueIngredients=(e)=>{this.setState({ingredients:e.target.value});}
+  getValueIngredients = (e) => { this.setState({ ingredients: e.target.value });};
 
   render() {
     return (

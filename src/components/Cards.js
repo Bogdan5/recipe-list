@@ -6,19 +6,20 @@ import '../App.css';
 // const TransitionGroup = React.addons.TransitionGroup;
 
 class Cards extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={visible:false};
+    this.state = { visible: false };
   }
 
-  fromEB=(action)=>{
+  fromEB=(action) => {
     this.props.editorApp(action, this.props.name);
-  }
+  };
 
   // this method is used to pass the signal to start slide down to the App parent
-  slide=()=>{
-    this.setState({visible:!this.state.visible});
-  }
+  slide=() => {
+    this.setState({ visible: !this.state.visible });
+  };
+
   render() {
     return (
       <div className="Cards">

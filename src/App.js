@@ -4,69 +4,72 @@ import DialogBox from './components/DialogBox.js';
 import './App.css';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      recipes:[{
-        'id':0,
-        'name':'Pizza',
-        'ingredients':['Ingredient1', 'Ingredient2', 'Ingredient3']
+    this.state = {
+      recipes: [{
+        id: 0,
+        name: 'Pizza',
+        ingredients: ['Ingredient1', 'Ingredient2', 'Ingredient3'],
       }],
-      styleDB:{
-        zIndex:-1,
-        position:'absolute',
-        width:'100%',
-        top:0,
-        backgroundColor:'rgba(103, 105, 112, 0.5)'
+      styleDB: {
+        zIndex: -1,
+        position: 'absolute',
+        width: '100%',
+        top: 0,
+        backgroundColor: 'rgba(103, 105, 112, 0.5)',
       },
-      valueNameDB:'',
-      valueIngrDB:''
-    }
+      valueNameDB: '',
+      valueIngrDB: '',
+    };
   }
 
   // this method changes the zIndex of the DialogBox component, to make it visible or invisible
   changeZIndex = (z) => {
-    let styler = Object.assign({},this.state.styleDB);
-    styler['zIndex']=z;
-    this.setState({styleDB:styler});
-  }
+    let styler = Object.assign({}, this.state.styleDB);
+    styler.zIndex = z;
+    this.setState({ styleDB: styler });
+  };
+
   // uses the changeZIndex method to make the DialogBox component visible
-  displayDB = ()=>{
+  displayDB = () => {
     this.changeZIndex(5);
-  }
+  };
+
   // uses the changeZIndex method to make the DialogBox component invisible
-  closeDB = ()=>{
+  closeDB = () => {
     this.changeZIndex(-1);
-  }
+  };
+
   // method that receives the data from the form of the DataBox component (see that component)
   // and adds it to state
-  addRecipe = (nam, ingr)=>{
+  addRecipe = (nam, ingr) => {
     this.closeDB();
-    let index=this.state.recipes.id;
+    let index = this.state.recipes.id;
     let list = this.state.recipes;
-    this.setState({recipes:list.push({
-      id:++index,
-      name:nam,
-      ingredients: ingr.split(',').map((item)=>item.trim())
-    })});
-  }
+    list.push({
+        id: ++index,
+        name: nam,
+        ingredients: ingr.split(',').map((item) => item.trim()),
+      });
+    this.setState({ recipes: list });
+  };
 
-  editRecipe=(action, name)=>{
-    if (action==='edit'){
+  editRecipe=(action, name) => {
+    if (action === 'edit') {
       this.displayDB();
-    } else if (action==='delete'){
-      const list=this.state.recipes.filter((item)=>item.name!==name);
-      this.setState({recipes:list});
+    } else if (action === 'delete') {
+      const list = this.state.recipes.filter((item) => item.name !== name);
+      this.setState({ recipes: list });
     }
-  }
-
+  };
 
   render() {
     return (
       <div className="App">
         <div >
           {this.state.recipes.map((item)=><Cards key={item.id}
-            name={item.name} ingredients={item.ingredients} slide={this.startSlide}//make animation here
+            name = {item.name} ingredients = {item.ingredients} slide={this.startSlide}//make animation here
           />)}
         </div>
         <button onClick={this.displayDB}>Add Recipe</button>
