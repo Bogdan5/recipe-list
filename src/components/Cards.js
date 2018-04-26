@@ -25,8 +25,8 @@ class Cards extends Component {
       <div className="Cards">
         <div onClick={this.slide}>{this.props.name}</div>
         <TransitionGroup>
-          <EditBox ingredients={this.props.ingredients}
-            name={this.props.ingredients} editor={this.fromEB}/>
+          {this.state.visible && <EditBox ingredients={this.props.ingredients}
+            name={this.props.ingredients} editor={this.fromEB}/>}
         </TransitionGroup>
       </div>
     );

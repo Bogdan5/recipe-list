@@ -11,7 +11,8 @@ class App extends Component {
         id: 0,
         name: 'Pizza',
         ingredients: ['Ingredient1', 'Ingredient2', 'Ingredient3'],
-      }],
+      },
+    ],
       styleDB: {
         zIndex: -1,
         position: 'absolute',

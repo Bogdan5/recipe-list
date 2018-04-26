@@ -5,13 +5,19 @@ import Velocity from 'velocity-animate';
 import '../App.css';
 
 class EditBox extends Component {
+  constructor(props) {
+    super(props);
+    this.container = null;
+  }
+
   componentWillEnter (callback) {
-    const element = this.container.getDOMNode();
-    Velocity(element, 'slideDown', { duration: 300 }).then(callback);
+    const element = this.container;
+    Velocity(this.container.current, 'slideDown', { duration: 300 }).then((callback) => callback,
+  });
   }
 
   componentWillLeave (callback) {
-    const element = this.container.getDOMNode();
+    const element = this.container;
     Velocity(element, 'slideUp', { duration: 300 }).then(callback);
   }
 
@@ -23,7 +29,7 @@ class EditBox extends Component {
 
   render() {
     return (
-      <div className="EditBox" ref={this.setContainer(this)}>
+      <div className="EditBox" ref={this.setContainer}>
         <div>Ingredients</div>
         <div>
           {this.props.ingredients.map((item)=>
