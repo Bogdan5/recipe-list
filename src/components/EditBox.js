@@ -10,17 +10,6 @@ class EditBox extends Component {
     this.container = null;
   }
 
-  componentWillEnter (callback) {
-    const element = this.container;
-    Velocity(this.container.current, 'slideDown', { duration: 300 }).then((callback) => callback,
-  });
-  }
-
-  componentWillLeave (callback) {
-    const element = this.container;
-    Velocity(element, 'slideUp', { duration: 300 }).then(callback);
-  }
-
   setContainer = (c)=> this.container = c;
 
   editRecipe = ()=>this.props.editor('edit');
@@ -33,7 +22,7 @@ class EditBox extends Component {
         <div>Ingredients</div>
         <div>
           {this.props.ingredients.map((item)=>
-            <div className="listItem">{this.item}</div>
+            <div className="listItem">{item}</div>
           )}
         </div>
         <div>
