@@ -17,15 +17,31 @@ class Cards extends Component {
     this.setState({
       height: height === 0 ? 'auto' : 0,
     });
+    this.sliderClose();
   };
 
   fromEB=(action) => {
     this.props.editorApp(action, this.props.name);
   };
 
-  // this method is used to pass the signal to start slide down to the App parent
-  slide=() => {
-    this.setState({ visible: !this.state.visible });
+  // this method is used to pass the number of the card clicked
+  sliderClose=() => {
+    // this.setState({ visible: !this.state.visible });
+    this.props.clicked(this.props.key);
+  };
+
+  componentDidUpdate (prevProps) {
+    if (this.props.wasClicked && this.props.clicked === prevProps.clicked
+      && this.props.clicked !== this.props.key) {
+      this.slideUp();
+    }
+  }
+
+  slideUp = () => {
+    const { height } = this.state;
+    this.setState({
+      height: 0,
+    });
   };
 
   render() {

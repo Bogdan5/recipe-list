@@ -22,6 +22,8 @@ class App extends Component {
       },
       valueNameDB: '',
       valueIngrDB: '',
+      clicked: null,
+      numberClicked: null,
     };
   }
 
@@ -65,12 +67,17 @@ class App extends Component {
     }
   };
 
+  clikedCard=(cardNo) => {
+    this.setState({ clicked: true, clickedNo: cardNo });
+  };
+
   render() {
     return (
       <div className="App">
         <div >
           {this.state.recipes.map((item)=><Cards key={item.id}
-            name = {item.name} ingredients = {item.ingredients} slide={this.startSlide}//make animation here
+            name = {item.name} ingredients = {item.ingredients} clicked={this.clickedCard}
+            clickedNo={item.clickedNo} wasClicked={item.clicked}//make animation here
           />)}
         </div>
         <button onClick={this.displayDB}>Add Recipe</button>
