@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AnimateHeight from 'react-animate-height';
 import Cards from './components/Cards.js';
 import DialogBox from './components/DialogBox.js';
 import './App.css';
@@ -8,7 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       recipes: [{
-        id: 0,
+        id: 1,
         name: 'Pizza',
         ingredients: ['Ingredient1', 'Ingredient2', 'Ingredient3'],
       },
@@ -22,8 +23,9 @@ class App extends Component {
       },
       valueNameDB: '',
       valueIngrDB: '',
-      clicked: null,
+      clicked: false,
       numberClicked: null,
+      classer: '',
     };
   }
 
@@ -36,22 +38,27 @@ class App extends Component {
 
   // uses the changeZIndex method to make the DialogBox component visible
   displayDB = () => {
-    this.changeZIndex(5);
+    // this.changeZIndex(5);
+    this.setState({ classer: 'moveDown zVisible' });
   };
 
   // uses the changeZIndex method to make the DialogBox component invisible
   closeDB = () => {
-    this.changeZIndex(-1);
+    // this.changeZIndex(-1);
+    this.setState({ classer: 'moveUp' });
+    setInterval(() => {
+      if ()
+    }, 200);
   };
 
   // method that receives the data from the form of the DataBox component (see that component)
   // and adds it to state
   addRecipe = (nam, ingr) => {
     this.closeDB();
-    let index = this.state.recipes.id;
+    let index = this.state.recipes.length + 1;
     let list = this.state.recipes;
     list.push({
-        id: ++index,
+        id: index,
         name: nam,
         ingredients: ingr.split(',').map((item) => item.trim()),
       });
@@ -67,7 +74,7 @@ class App extends Component {
     }
   };
 
-  clikedCard=(cardNo) => {
+  clickedCard=(cardNo) => {
     this.setState({ clicked: true, clickedNo: cardNo });
   };
 
@@ -75,18 +82,17 @@ class App extends Component {
     return (
       <div className="App">
         <div >
-          {this.state.recipes.map((item)=><Cards key={item.id}
-            name = {item.name} ingredients = {item.ingredients} clicked={this.clickedCard}
-            clickedNo={item.clickedNo} wasClicked={item.clicked}//make animation here
+          {this.state.recipes.map((item)=><Cards key={item.id} numero={item.id}
+            name = {item.name} ingredients = {item.ingredients} clicker={this.clickedCard}
+            clickedNo={this.state.clickedNo} wasClicked={this.state.clicked}//make animation here
           />)}
         </div>
         <button onClick={this.displayDB}>Add Recipe</button>
-        <div style={this.state.styleDB}>
+        {/* <div style={this.state.styleDB}> */}
           <DialogBox  editorApp={this.editRecipe} callbackApp={this.displayDB}
             hider={this.closeDB} adder={this.addRecipe}
-            valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}
-          />
-        </div>
+            valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}/>
+        {/* </div> */}
       </div>
 
     );

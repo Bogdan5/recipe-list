@@ -8,7 +8,9 @@
     "react-addons-transition-group": "^15.6.2",
     "react-animate-height": "^1.0.2",
     "react-dom": "^16.2.0",
+    "react-measure": "^2.0.0",
     "react-scripts": "1.1.1",
+    "react-transition-group": "^1.2.1",
     "velocity-react": "^1.4.1",
     "velocity-transition-group": "^1.2.2"
   },

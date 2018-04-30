@@ -27,18 +27,19 @@ class Cards extends Component {
   // this method is used to pass the number of the card clicked
   sliderClose=() => {
     // this.setState({ visible: !this.state.visible });
-    this.props.clicked(this.props.key);
+    this.props.clicker(this.props.numero);
   };
 
   componentDidUpdate (prevProps) {
-    if (this.props.wasClicked && this.props.clicked === prevProps.clicked
-      && this.props.clicked !== this.props.key) {
+    if (this.props.wasClicked && prevProps.clickedNo && this.props.clickedNo !== prevProps.clickedNo
+      && this.props.clickedNo !== this.props.numero) {
       this.slideUp();
     }
   }
 
   slideUp = () => {
     const { height } = this.state;
+    console.log('slideUp', { height });
     this.setState({
       height: 0,
     });
@@ -46,13 +47,14 @@ class Cards extends Component {
 
   render() {
     const { height } = this.state;
+    let editKey = 'e' + this.props.numero;
 
     return (
       <div className="Cards">
         <div onClick={this.toggle}>{this.props.name}</div>
 
         <AnimateHeight duration={ 500 } height={ height }>
-          <EditBox name={this.props.name} ingredients={this.props.ingredients}/>
+          <EditBox key={editKey} name={this.props.name} ingredients={this.props.ingredients}/>
         </AnimateHeight>
       </div>
     );

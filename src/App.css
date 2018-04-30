@@ -24,15 +24,52 @@
 }
 
 .DialogBox{
-  /* background-color: rgba(103, 105, 112, 0.5); */
+  background-color: rgba(103, 105, 112, 0.5);
   height:100vh;
   width: 100%;
   top:0;
 }
 
+.zInvisible{
+  z-index:-1;
+}
+
+.zVisible{
+  z-index: 5;
+}
+
 .DialogDiv{
-  margin-top:100px;
+  height:33vh;
   margin-left:25%;
   width:50%;
   background-color: rgb(213, 220, 237);
+}
+
+/* animation for DialogDiv in DialogBox */
+.slide-enter {
+  margin-top: 0;
+}
+
+.slide-enter.slide-enter-active {
+  margin-top:33vh;
+  transition: margin-top 500ms ease-in;
+}
+
+.slide-leave {
+  margin-top: 33vh;
+}
+
+.slide-leave.slide-leave-active {
+  margin-top: 0;
+  transition: margin-top 500ms ease-in;
+}
+
+.moveDown {
+  transform: translate(100px,0);
+  transition: transform 300ms ease-in-out;
+}
+
+.moveUp{
+  transform: tranlate(-100px,0);
+  transition: transform 300ms ease-in-out;
 }
