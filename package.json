@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "npm": "^6.0.0",
     "react": "^16.2.0",
     "react-addons-shallow-compare": "^15.6.2",
     "react-addons-transition-group": "^15.6.2",
