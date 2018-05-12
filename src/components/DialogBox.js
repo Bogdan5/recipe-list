@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group';
+// import { CSSTransitionGroup } from 'react-transition-group';
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Measure from 'react-measure';
 import '../App.css';
 
 class DialogBox extends Component {
@@ -23,13 +25,12 @@ class DialogBox extends Component {
   render() {
     console.log(this.state.dimensions);
     const { top } = this.state.dimensions;
+    console.log({ top });
+
     return (
-        <div className="DialogBox zInvisible">
-          <Measure bounds onResize={(contentRect) => {
-            this.setState({ dimensions: contentRect.bounds });
-          }
-          }>
-            {({ measureRef }) => { <div className="DialogDiv" ref={ measureRef }>
+        <div className={this.props.zVisibility}>
+
+          <div className={this.props.classer}>
               <header className="header-db">
                 <div>Add a recipe</div>
                 <div onClick={this.hideDB}>x</div>
@@ -46,10 +47,8 @@ class DialogBox extends Component {
                 <input type="submit" value="Submit" onClick={this.addRecipe}/>
                 <button onClick={this.hideDB}>Cancel</button>
               </footer>
-            </div>;
-            }
-          }
-          </Measure>
+          </div>
+
         </div>
     );
   }

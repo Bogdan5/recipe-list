@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AnimateHeight from 'react-animate-height';
+import classNames from 'classnames';
 import Cards from './components/Cards.js';
 import DialogBox from './components/DialogBox.js';
 import './App.css';
@@ -25,7 +26,8 @@ class App extends Component {
       valueIngrDB: '',
       clicked: false,
       numberClicked: null,
-      classer: '',
+      animationClass: 'DialogDiv',
+      visibility: 'zInvisible',
     };
   }
 
@@ -39,16 +41,15 @@ class App extends Component {
   // uses the changeZIndex method to make the DialogBox component visible
   displayDB = () => {
     // this.changeZIndex(5);
-    this.setState({ classer: 'moveDown zVisible' });
+    this.setState({ classer: 'DialogDiv moveDown', visibility: 'DialogBox zVisible' });
   };
 
   // uses the changeZIndex method to make the DialogBox component invisible
   closeDB = () => {
     // this.changeZIndex(-1);
-    this.setState({ classer: 'moveUp' });
-    setInterval(() => {
-      if ()
-    }, 200);
+    this.setState({ classer: 'DialogDiv moveUp' });
+    setTimeout(() => {this.setState({ visibility: 'DialogBox zInvisible',
+        classer: 'DialogDiv', });}, 600);
   };
 
   // method that receives the data from the form of the DataBox component (see that component)
@@ -91,7 +92,8 @@ class App extends Component {
         {/* <div style={this.state.styleDB}> */}
           <DialogBox  editorApp={this.editRecipe} callbackApp={this.displayDB}
             hider={this.closeDB} adder={this.addRecipe}
-            valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}/>
+            valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}
+            classer={this.state.classer} zVisibility={this.state.visibility}/>
         {/* </div> */}
       </div>
 
