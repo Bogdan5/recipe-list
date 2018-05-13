@@ -28,9 +28,9 @@ class DialogBox extends Component {
     console.log({ top });
 
     return (
-        <div className={this.props.zVisibility}>
+        <div className={this.props.containerStyle}>
 
-          <div className={this.props.classer}>
+          <div className={this.props.divStyle}>
               <header className="header-db">
                 <div>Add a recipe</div>
                 <div onClick={this.hideDB}>x</div>

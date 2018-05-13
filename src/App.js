@@ -28,6 +28,16 @@ class App extends Component {
       numberClicked: null,
       animationClass: 'DialogDiv',
       visibility: 'zInvisible',
+      containerDB: {
+        DialogBox: true,
+        zVisibile: false,
+        zInvisible: true,
+      },
+      divDB: {
+        DialogDiv: true,
+        moveDown: false,
+        moveUp: false,
+      },
     };
   }
 
@@ -80,6 +90,8 @@ class App extends Component {
   };
 
   render() {
+    const container = classNames(this.state.containerDB);
+    const div = classNames(this.state.divDB);
     return (
       <div className="App">
         <div >
@@ -93,7 +105,7 @@ class App extends Component {
           <DialogBox  editorApp={this.editRecipe} callbackApp={this.displayDB}
             hider={this.closeDB} adder={this.addRecipe}
             valueName={this.state.valueNameDB} valueIngr={this.state.valueIngrDB}
-            classer={this.state.classer} zVisibility={this.state.visibility}/>
+            containerStyle={container} divStyle={div}/>
         {/* </div> */}
       </div>
 
