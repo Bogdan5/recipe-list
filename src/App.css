@@ -47,7 +47,7 @@
 }
 
 /* animation for DialogDiv in DialogBox */
-.slide-enter {
+/* .slide-enter {
   margin-top: 0;
 }
 
@@ -63,14 +63,14 @@
 .slide-leave.slide-leave-active {
   margin-top: 0;
   transition: margin-top 500ms ease-in;
-}
+} */
 
 .moveDown {
-  transform: translate(100px,0);
+  transform: translate(0, 100px);
   transition: transform 300ms ease-in-out;
 }
 
 .moveUp{
-  transform: tranlate(-100px,0);
+  transform: translate(0, -100px);
   transition: transform 300ms ease-in-out;
 }

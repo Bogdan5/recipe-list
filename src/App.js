@@ -51,15 +51,15 @@ class App extends Component {
   // uses the changeZIndex method to make the DialogBox component visible
   displayDB = () => {
     // this.changeZIndex(5);
-    this.setState({ classer: 'DialogDiv moveDown', visibility: 'DialogBox zVisible' });
+    this.setState({ containerDB: 'DialogDiv moveDown', divDB: 'DialogBox zVisible' });
   };
 
   // uses the changeZIndex method to make the DialogBox component invisible
   closeDB = () => {
     // this.changeZIndex(-1);
-    this.setState({ classer: 'DialogDiv moveUp' });
-    setTimeout(() => {this.setState({ visibility: 'DialogBox zInvisible',
-        classer: 'DialogDiv', });}, 600);
+    this.setState({ containerDB: 'DialogDiv moveUp' });
+    setTimeout(() => {this.setState({ divDB: 'DialogDiv zInvisible',
+        containerDB: 'DialogBox', });}, 600);
   };
 
   // method that receives the data from the form of the DataBox component (see that component)
