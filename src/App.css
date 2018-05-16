@@ -44,6 +44,16 @@
   margin-left:25%;
   width:50%;
   background-color: rgb(213, 220, 237);
+  transition: opacity 300ms ease;
+  opacity: 0;
+}
+
+.opaque{
+  opacity: 1;
+}
+
+.transparent{
+  opacity: 0;
 }
 
 /* animation for DialogDiv in DialogBox */
@@ -66,7 +76,7 @@
 } */
 
 .moveDown {
-  transform: translate(0, 100px);
+  transform: translate(0, 200px);
   transition: transform 300ms ease-in-out;
 }
 

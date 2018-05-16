@@ -15,13 +15,6 @@ class App extends Component {
         ingredients: ['Ingredient1', 'Ingredient2', 'Ingredient3'],
       },
     ],
-      styleDB: {
-        zIndex: -1,
-        position: 'absolute',
-        width: '100%',
-        top: 0,
-        backgroundColor: 'rgba(103, 105, 112, 0.5)',
-      },
       valueNameDB: '',
       valueIngrDB: '',
       clicked: false,
@@ -37,6 +30,8 @@ class App extends Component {
         DialogDiv: true,
         moveDown: false,
         moveUp: false,
+        opaque: false,
+        transparent: true,
       },
     };
   }
@@ -51,15 +46,15 @@ class App extends Component {
   // uses the changeZIndex method to make the DialogBox component visible
   displayDB = () => {
     // this.changeZIndex(5);
-    this.setState({ containerDB: 'DialogDiv moveDown', divDB: 'DialogBox zVisible' });
+    this.setState({ divDB: 'DialogDiv moveDown opaque', containerDB: 'DialogBox zVisible' });
   };
 
   // uses the changeZIndex method to make the DialogBox component invisible
   closeDB = () => {
     // this.changeZIndex(-1);
-    this.setState({ containerDB: 'DialogDiv moveUp' });
-    setTimeout(() => {this.setState({ divDB: 'DialogDiv zInvisible',
-        containerDB: 'DialogBox', });}, 600);
+    this.setState({ divDB: 'DialogDiv moveUp transparent' });
+    setTimeout(() => {this.setState({ divDB: 'DialogDiv',
+        containerDB: 'DialogBox zInvisible', });}, 300);
   };
 
   // method that receives the data from the form of the DataBox component (see that component)
