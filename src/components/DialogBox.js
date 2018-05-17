@@ -20,7 +20,8 @@ class DialogBox extends Component {
 
   getValueName = (e) => { this.setState({ name: e.target.value });};
 
-  getValueIngredients = (e) => { this.setState({ ingredients: e.target.value });};
+  getValueIngredients = (e) => { this.setState({ ingredients: e.target.value.length ?
+     e.target.value : '(Recipe)', });};
 
   render() {
     console.log(this.state.dimensions);

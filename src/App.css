@@ -44,7 +44,7 @@
   margin-left:25%;
   width:50%;
   background-color: rgb(213, 220, 237);
-  transition: opacity 300ms ease;
+  transition: opacity 600ms ease-in-out, transform 600ms ease-in-out;
   opacity: 0;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .transparent{
-  opacity: 0;
+  opacity: 0.2;
 }
 
 /* animation for DialogDiv in DialogBox */
@@ -77,10 +77,10 @@
 
 .moveDown {
   transform: translate(0, 200px);
-  transition: transform 300ms ease-in-out;
+  /* transition: transform 600ms ease-in-out; */
 }
 
 .moveUp{
   transform: translate(0, -100px);
-  transition: transform 300ms ease-in-out;
+  /* transition: transform 600ms ease-in-out; */
 }

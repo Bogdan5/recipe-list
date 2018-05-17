@@ -31,17 +31,10 @@ class App extends Component {
         moveDown: false,
         moveUp: false,
         opaque: false,
-        transparent: true,
+        transparent: false,
       },
     };
   }
-
-  // this method changes the zIndex of the DialogBox component, to make it visible or invisible
-  changeZIndex = (z) => {
-    let styler = Object.assign({}, this.state.styleDB);
-    styler.zIndex = z;
-    this.setState({ styleDB: styler });
-  };
 
   // uses the changeZIndex method to make the DialogBox component visible
   displayDB = () => {
@@ -54,7 +47,7 @@ class App extends Component {
     // this.changeZIndex(-1);
     this.setState({ divDB: 'DialogDiv moveUp transparent' });
     setTimeout(() => {this.setState({ divDB: 'DialogDiv',
-        containerDB: 'DialogBox zInvisible', });}, 300);
+        containerDB: 'DialogBox zInvisible', });}, 600);
   };
 
   // method that receives the data from the form of the DataBox component (see that component)
