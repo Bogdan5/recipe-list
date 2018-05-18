@@ -21,7 +21,7 @@ class Cards extends Component {
   };
 
   fromEB=(action) => {
-    this.props.editorApp(action, this.props.name);
+    this.props.editorApp(action, this.props.numero);
   };
 
   // this method is used to pass the number of the card clicked
@@ -39,7 +39,6 @@ class Cards extends Component {
 
   slideUp = () => {
     const { height } = this.state;
-    console.log('slideUp', { height });
     this.setState({
       height: 0,
     });
@@ -54,7 +53,8 @@ class Cards extends Component {
         <div onClick={this.toggle}>{this.props.name}</div>
 
         <AnimateHeight duration={ 500 } height={ height }>
-          <EditBox key={editKey} name={this.props.name} ingredients={this.props.ingredients}/>
+          <EditBox key={editKey} name={this.props.name} ingredients={this.props.ingredients}
+          editor={ this.fromEB }/>
         </AnimateHeight>
       </div>
     );

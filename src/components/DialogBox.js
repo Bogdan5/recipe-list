@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 // import { CSSTransitionGroup } from 'react-transition-group';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Measure from 'react-measure';
@@ -7,7 +8,7 @@ import '../App.css';
 class DialogBox extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', ingredients: '', dimensions: { top: -1 } };
+    this.state = { name: this.props.valueName, ingredients: this.props.valueIngr, };
   }
 
   hideDB = () => {
@@ -15,22 +16,26 @@ class DialogBox extends Component {
   };
 
   addRecipe = () => {
+    // if (this.state.name.length === 0) {
+    //   this.setState({ name: '(Recipe)' });
+    //   console.log('name');
+    // }
+
     this.props.adder(this.state.name, this.state.ingredients);
   };
 
-  getValueName = (e) => { this.setState({ name: e.target.value });};
+  getValueName = (e) => { this.setState({ name: e.target.value, });};
 
-  getValueIngredients = (e) => { this.setState({ ingredients: e.target.value.length ?
-     e.target.value : '(Recipe)', });};
+  getValueIngredients = (e) => { this.setState({ ingredients:
+    e.target.value.trim().split(','), });};
 
   render() {
-    console.log(this.state.dimensions);
-    const { top } = this.state.dimensions;
-    console.log({ top });
+    // console.log(this.state.dimensions);
+    // const { top } = this.state.dimensions;
+    // console.log({ top });
 
     return (
         <div className={this.props.containerStyle}>
-
           <div className={this.props.divStyle}>
               <header className="header-db">
                 <div>Add a recipe</div>
@@ -49,7 +54,6 @@ class DialogBox extends Component {
                 <button onClick={this.hideDB}>Cancel</button>
               </footer>
           </div>
-
         </div>
     );
   }
