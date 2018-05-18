@@ -57,14 +57,19 @@ class App extends Component {
   addRecipe = (nam, ingr) => {
     this.closeDB();
     if (this.state.cardEdited) {
-      let recipesCopy = this.state.recipes.slice();
-      this.state.recipes.map((item) => {
+      let recipesCopy = [];
+      this.state.recipes.forEach((item) => {
+        recipesCopy.push({ id: item.id, name: item.name, ingredients: item.ingredients.slice() });
+      });
+      this.state.recipes.map((item, index) => {
         if (item.id === this.state.cardEdited) {
-          
-          this.setState({ recipes: recipesCopy });
+          recipesCopy[index].name = nam;
+          recipesCopy[index].ingredients = ingr;
+          this.setState({ recipes: recipesCopy, cardEdited: 0, });
+          //do the slideUp in Card
         }
 
-      })
+      });
     } else {
       let index = this.state.recipes.length + 1;
       let list = this.state.recipes;
