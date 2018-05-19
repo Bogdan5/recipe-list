@@ -18,7 +18,7 @@ class App extends Component {
       valueNameDB: '',
       valueIngrDB: '',
       clicked: false,
-      numberClicked: null,
+      clickedNo: null,
       animationClass: 'DialogDiv',
       visibility: 'zInvisible',
       cardEdited: 0,
@@ -65,8 +65,7 @@ class App extends Component {
         if (item.id === this.state.cardEdited) {
           recipesCopy[index].name = nam;
           recipesCopy[index].ingredients = ingr;
-          this.setState({ recipes: recipesCopy, cardEdited: 0, });
-          //do the slideUp in Card
+          this.setState({ recipes: recipesCopy, cardEdited: 0, clicked: false, clickedNo: null, });
         }
 
       });
