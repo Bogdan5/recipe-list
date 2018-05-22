@@ -16,7 +16,7 @@ class App extends Component {
       },
     ],
       valueNameDB: '',
-      valueIngrDB: '',
+      valueIngrDB: [],
       clicked: false,
       clickedNo: null,
       animationClass: 'DialogDiv',
@@ -40,8 +40,7 @@ class App extends Component {
   // uses the changeZIndex method to make the DialogBox component visible
   displayDB = () => {
     // this.changeZIndex(5);
-    this.setState({ divDB: 'DialogDiv moveDown opaque', containerDB: 'DialogBox zVisible',
-      valueName: '', valueIngr: '', });
+    this.setState({ divDB: 'DialogDiv moveDown opaque', containerDB: 'DialogBox zVisible', });
   };
 
   // uses the changeZIndex method to make the DialogBox component invisible
@@ -75,7 +74,7 @@ class App extends Component {
       list.push({
           id: index,
           name: nam.length ? nam : '(Recipe)',
-          ingredients: ingr.split(',').map((item) => item.trim()),
+          ingredients: ingr.map((item) => item.trim()),
         });
       this.setState({ recipes: list });
     }
@@ -85,6 +84,7 @@ class App extends Component {
     this.state.recipes.map((item) => {
       if (item.id === num) {
         if (action === 'edit') {
+          console.log('editing',item.name, item.ingredients);
           this.setState({ cardEdited: num, valueNameDB: item.name, valueIngrDB: item.ingredients });
           this.displayDB();
         } else if (action === 'delete') {

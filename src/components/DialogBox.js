@@ -23,6 +23,12 @@ class DialogBox extends Component {
     this.props.adder(this.state.name, this.state.ingredients);
   };
 
+  componentDidUpdate (prevProps){
+    // if (prevProps.containerDB=== && prevProps.cardEdited){
+      this.setState({name: this.props.valueName, ingredients: this.props.valueIngr});
+    }
+  }
+
   getValueName = (e) => {
     console.log('name',e.target.value);
     this.setState({ name: e.target.value, });};
@@ -46,10 +52,10 @@ class DialogBox extends Component {
               </header>
               <form>
                 <p>Recipe</p>
-                <input type="text" name="recipeName" value={this.props.valueName}
+                <input type="text" name="recipeName" value={this.state.name}
                 onChange={this.getValueName}/>
                 <p>Ingredients</p>
-                <input type="text" name="ingredients" value={this.props.valueIngr}
+                <input type="text" name="ingredients" value={this.state.ingredients}
                 onChange={this.getValueIngredients}/>
               </form>
               <footer>
