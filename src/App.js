@@ -74,7 +74,7 @@ class App extends Component {
       let list = this.state.recipes;
       list.push({
           id: index,
-          name: nam,
+          name: nam.length ? nam : '(Recipe)',
           ingredients: ingr.split(',').map((item) => item.trim()),
         });
       this.setState({ recipes: list });

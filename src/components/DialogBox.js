@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 // import { CSSTransitionGroup } from 'react-transition-group';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import Measure from 'react-measure';
 import '../App.css';
 
 class DialogBox extends Component {
@@ -24,9 +23,13 @@ class DialogBox extends Component {
     this.props.adder(this.state.name, this.state.ingredients);
   };
 
-  getValueName = (e) => { this.setState({ name: e.target.value, });};
+  getValueName = (e) => {
+    console.log('name',e.target.value);
+    this.setState({ name: e.target.value, });};
 
-  getValueIngredients = (e) => { this.setState({ ingredients:
+  getValueIngredients = (e) => {
+    console.log('ingred',e.target.value);
+    this.setState({ ingredients:
     e.target.value.trim().split(','), });};
 
   render() {
@@ -43,10 +46,10 @@ class DialogBox extends Component {
               </header>
               <form>
                 <p>Recipe</p>
-                <input type="text" name="recipeName" value={this.state.name}
+                <input type="text" name="recipeName" value={this.props.valueName}
                 onChange={this.getValueName}/>
                 <p>Ingredients</p>
-                <input type="text" name="ingredients" value={this.state.ingredients}
+                <input type="text" name="ingredients" value={this.props.valueIngr}
                 onChange={this.getValueIngredients}/>
               </form>
               <footer>
