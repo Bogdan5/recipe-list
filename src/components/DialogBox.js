@@ -23,18 +23,17 @@ class DialogBox extends Component {
     this.props.adder(this.state.name, this.state.ingredients);
   };
 
-  componentDidUpdate (prevProps){
-    // if (prevProps.containerDB=== && prevProps.cardEdited){
-      this.setState({name: this.props.valueName, ingredients: this.props.valueIngr});
+  componentDidUpdate (prevProps) {
+    if (prevProps.containerStyle.includes('zInvisible') &&
+      this.props.containerStyle.includes('zVisible')) {
+      this.setState({ name: this.props.valueName, ingredients: this.props.valueIngr });
     }
   }
 
   getValueName = (e) => {
-    console.log('name',e.target.value);
     this.setState({ name: e.target.value, });};
 
   getValueIngredients = (e) => {
-    console.log('ingred',e.target.value);
     this.setState({ ingredients:
     e.target.value.trim().split(','), });};
 

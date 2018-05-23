@@ -84,7 +84,6 @@ class App extends Component {
     this.state.recipes.map((item) => {
       if (item.id === num) {
         if (action === 'edit') {
-          console.log('editing',item.name, item.ingredients);
           this.setState({ cardEdited: num, valueNameDB: item.name, valueIngrDB: item.ingredients });
           this.displayDB();
         } else if (action === 'delete') {
@@ -104,6 +103,7 @@ class App extends Component {
   render() {
     const container = classNames(this.state.containerDB);
     const div = classNames(this.state.divDB);
+    console.log(container, div);
     return (
       <div className="App">
         <div >
