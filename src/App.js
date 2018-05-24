@@ -38,11 +38,15 @@ class App extends Component {
     };
   }
 
+  adderRecipe = () => {
+    this.setState({ addRecipeClicked: true, valueNameDB: '', valueIngrDB: [], });
+    this.displayDB();
+  };
+
   // uses the changeZIndex method to make the DialogBox component visible
   displayDB = () => {
     // this.changeZIndex(5);
-    this.setState({ divDB: 'DialogDiv moveDown opaque', containerDB: 'DialogBox zVisible',
-      addRecipeClicked: true, });
+    this.setState({ divDB: 'DialogDiv moveDown opaque', containerDB: 'DialogBox zVisible', });
   };
 
   // uses the changeZIndex method to make the DialogBox component invisible
@@ -105,7 +109,6 @@ class App extends Component {
   render() {
     const container = classNames(this.state.containerDB);
     const div = classNames(this.state.divDB);
-    console.log(container, div);
     return (
       <div className="App">
         <div >
@@ -115,7 +118,7 @@ class App extends Component {
             editorApp={this.editRecipe} addRecipeClicked={this.state.addRecipeClicked}
           />)}
         </div>
-        <button onClick={this.displayDB}>Add Recipe</button>
+        <button onClick={this.adderRecipe}>Add Recipe</button>
         {/* <div style={this.state.styleDB}> */}
           <DialogBox  editorApp={this.editRecipe} callbackApp={this.displayDB}
             hider={this.closeDB} adder={this.addRecipe}

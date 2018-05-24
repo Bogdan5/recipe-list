@@ -10,16 +10,13 @@ class DialogBox extends Component {
     this.state = { name: this.props.valueName, ingredients: this.props.valueIngr, };
   }
 
+  //passes data to the App component - hides the component chaing the zIndex
   hideDB = () => {
     this.props.hider();
   };
 
+  //adds recipe
   addRecipe = () => {
-    // if (this.state.name.length === 0) {
-    //   this.setState({ name: '(Recipe)' });
-    //   console.log('name');
-    // }
-
     this.props.adder(this.state.name, this.state.ingredients);
   };
 
