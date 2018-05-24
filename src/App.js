@@ -22,6 +22,7 @@ class App extends Component {
       animationClass: 'DialogDiv',
       visibility: 'zInvisible',
       cardEdited: 0,
+      addRecipeClicked: false,
       containerDB: {
         DialogBox: true,
         zVisibile: false,
@@ -40,13 +41,14 @@ class App extends Component {
   // uses the changeZIndex method to make the DialogBox component visible
   displayDB = () => {
     // this.changeZIndex(5);
-    this.setState({ divDB: 'DialogDiv moveDown opaque', containerDB: 'DialogBox zVisible', });
+    this.setState({ divDB: 'DialogDiv moveDown opaque', containerDB: 'DialogBox zVisible',
+      addRecipeClicked: true, });
   };
 
   // uses the changeZIndex method to make the DialogBox component invisible
   closeDB = () => {
     // this.changeZIndex(-1);
-    this.setState({ divDB: 'DialogDiv moveUp transparent' });
+    this.setState({ divDB: 'DialogDiv moveUp transparent', addRecipeClicked: false, });
     setTimeout(() => {this.setState({ divDB: 'DialogDiv',
         containerDB: 'DialogBox zInvisible', });}, 600);
   };
@@ -110,7 +112,7 @@ class App extends Component {
           {this.state.recipes.map((item)=><Cards key={item.id} numero={item.id}
             name = {item.name} ingredients = {item.ingredients} clicker={this.clickedCard}
             clickedNo={this.state.clickedNo} wasClicked={this.state.clicked}//make animation here
-            editorApp={this.editRecipe}
+            editorApp={this.editRecipe} addRecipeClicked={this.state.addRecipeClicked}
           />)}
         </div>
         <button onClick={this.displayDB}>Add Recipe</button>

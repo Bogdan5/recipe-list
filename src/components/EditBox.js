@@ -11,7 +11,10 @@ class EditBox extends Component {
 
   setContainer = (c)=> this.container = c;
 
-  editRecipe = ()=>this.props.editor('edit');
+  editRecipe = ()=> {
+    console.log('editRecipe');
+    this.props.editor('edit');
+  };
 
   deleteRecipe=()=>this.props.editor('delete');
 

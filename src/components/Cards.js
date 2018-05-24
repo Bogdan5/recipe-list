@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import TransitionGroup from 'react-transition-group/TransitionGroup';
 import AnimateHeight from 'react-animate-height';
 import EditBox from './EditBox';
 import '../App.css';
@@ -20,9 +19,10 @@ class Cards extends Component {
     this.sliderClose();
   };
 
-  fromEB=(action, isEdited) => {
+  fromEB=(action) => {
+    console.log('fromEB');
     this.props.editorApp(action, this.props.numero);
-    isEdited && this.slideUp();
+    this.slideUp();
   };
 
   // this method is used to pass the number of the card clicked
@@ -32,8 +32,9 @@ class Cards extends Component {
   };
 
   componentDidUpdate (prevProps) {
-    if (this.props.wasClicked && prevProps.clickedNo && this.props.clickedNo !== prevProps.clickedNo
-      && this.props.clickedNo !== this.props.numero) {
+    if ((this.props.wasClicked && prevProps.clickedNo &&
+      this.props.clickedNo !== prevProps.clickedNo && this.props.clickedNo !== this.props.numero)
+      || this.props.addRecipeClicked) {
       console.log('slide up');
       this.slideUp();
     }
